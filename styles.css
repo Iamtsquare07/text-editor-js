@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Croissant+One&display=swap');
+
+body {
+    padding: 10px;
+    background-color: #000014;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: rgba(255, 217, 0, 0.61);
+    font-family: 'Croissant One', cursive;
+}
+
+h1 {
+    font-size: 5vw;
+}
+
+.text-editor-root {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: whitesmoke;
+    margin: auto;
+    width: 85%;
+    min-height: 500px;
+    margin-top: 0px;
+    background-color: #00006e;
+    padding: 25px 20px 10px 20px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px 1px #1b37b4;
+    margin-left: -10px;
+}
+
+#commands {
+    background-color: #b3b3b3;
+    border-radius:2px 2px 0 0;
+    padding: 5px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+#editor {
+    background-color:#fff;
+    border-radius:0 0 10px 10px;
+    border:1px solid #6d6c6c;
+    padding: 5px 10px 5px 10px;
+    color:black;
+    height: 400px;
+}
+
+#editor:focus {
+    outline:none;
+}
+
+button, select {
+    min-width: fit-content;
+    width: fit-content;
+    padding: 5px 10px 5px 10px;
+    background-color:#fff;
+    border:1px solid #fff;
+    border-radius:3px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.options {
+    background-color:#d9d8f5;
+    display: flex;
+    justify-content: left;
+}
+
+.options a {
+    text-decoration: none;
+    color: black;
+}
+
+.options li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+@media only screen and (min-width: 1024px) {
+    .text-editor-root {
+        min-width: 500px;
+        width: 60%;
+        margin-left: auto;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+}
