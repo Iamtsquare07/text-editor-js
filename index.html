@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <title>Text Editor</title>
 </head>
 
@@ -25,7 +24,12 @@
             <ul id="drop-down-menu">
                 <li id="export">Export</li>
                 <li>Format</li>
-                <li><a id="download-link" download="text-editor-file.txt">Save As</a></li>
+                <li id="save-as-submenu">Save As ▾
+                    <ul id="save-as-options">
+                        <li><a id="download-link-plain" download="text-editor-file-js-plain.txt">Plain Text</a></li>
+                        <li><a id="download-link-html" download="text-editor-file-js.txt">HTML</a></li>
+                    </ul>
+                </li>
                 <li id="save">Save</li>
                 <li id="auto">Auto Save <input id="auto-save" type="checkbox" checked></li>
                 <li id="exit-button">Exit</li>
@@ -36,6 +40,7 @@
                 <li id="paste">Paste</li>
             </ul>
         </div>
+
 
         <div id="commands">
             <button id="undo"><i class="fa-solid fa-arrow-rotate-left"></i></button>
