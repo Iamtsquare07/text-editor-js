@@ -51,6 +51,7 @@ h1 {
     padding: 5px 10px 5px 10px;
     color: black;
     height: 400px;
+    overflow-y: auto;
 }
 
 #editor h1 {
@@ -70,7 +71,7 @@ select {
     width: fit-content;
     padding: 5px 10px 5px 10px;
     background-color: #fff;
-    border: 1px solid #d9d2fd;
+    border: 1px solid #9995af;
     border-radius: 3px;
     cursor: pointer;
     font-size: 16px;
@@ -113,6 +114,7 @@ select:hover {
     background-color: #c4c4c58f;
 }
 
+
 .options li:hover {
     background-color: #a9a9aae1;
 }
@@ -152,12 +154,29 @@ select:hover {
     /* Show the content when hovering over the trigger */
 }
 
+#save-as-options {
+    display: none;
+    margin: 0px;
+    padding: 3px;
+}
+
+#save-as-options {
+    padding: 3px;
+    margin: 0px;
+}
+
+#save-as-submenu:hover #save-as-options {
+    display: block;
+}
+
+
 #emoji-button {
     font-size: 13px;
 }
 
-.active {
-    background-color: #d1d5fc;
+.active,
+.options li.active {
+    background-color: #a1a4c2;
 }
 
 @media only screen and (min-width: 1024px) {
