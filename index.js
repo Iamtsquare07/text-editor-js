@@ -141,8 +141,7 @@ function execCommandDependencies() {
   });
 }
 
-execCommandDependencies()
-
+execCommandDependencies();
 
 document.getElementById("exit-button").addEventListener("click", function () {
   // Close the browser tab
@@ -321,19 +320,20 @@ function getSelectedText() {
   return selectedText;
 }
 
-
 const downloadLink = document.getElementById("download-link");
 
 downloadLink.addEventListener("click", saveFile);
 
-document.getElementById('export').addEventListener("click", () => {
-    saveFile();
-    alert("Your file has been exported successfully, click Save As to download to your device.")
-    downloadLink.style.fontWeight = "bold";
+document.getElementById("export").addEventListener("click", () => {
+  saveFile();
+  alert(
+    "Your file has been exported successfully, click Save As to download to your device."
+  );
+  downloadLink.style.fontWeight = "bold";
 });
 
-  function saveFile() {
-    // Text content to be exported
+function saveFile() {
+  // Text content to be exported
   const textToExport = editor.innerHTML;
 
   // Create a Blob containing the text
@@ -344,25 +344,24 @@ document.getElementById('export').addEventListener("click", () => {
 
   // Set the download link's href attribute to the Blob URL
   downloadLink.href = url;
-  }
+}
 
-  let codeInitiated = false;
-  document.getElementById('code').addEventListener('click', () => {
-    if(!codeInitiated) {
-        let code = formatHTMLWithLineBreaks(editor.innerHTML);
-        editor.textContent = code;
-        codeInitiated = true;
-    }else {
-        let text = editor.textContent;
-        editor.innerHTML = text;
-        codeInitiated = false;
-    }
-  })
-
-  function formatHTMLWithLineBreaks(html) {
-    // Use regular expressions to insert a newline character before each opening tag
-    const formattedHTML = html.replace(/<[^>]+>/g, '\n$&');
-  
-    return formattedHTML;
+let codeInitiated = false;
+document.getElementById("code").addEventListener("click", () => {
+  if (!codeInitiated) {
+    let code = formatHTMLWithLineBreaks(editor.innerHTML);
+    editor.textContent = code;
+    codeInitiated = true;
+  } else {
+    let text = editor.textContent;
+    editor.innerHTML = text;
+    codeInitiated = false;
   }
-  
+});
+
+function formatHTMLWithLineBreaks(html) {
+  // Use regular expressions to insert a newline character before each opening tag
+  const formattedHTML = html.replace(/<[^>]+>/g, "\n$&");
+
+  return formattedHTML;
+}
