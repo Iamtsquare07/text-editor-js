@@ -333,19 +333,34 @@ function getSelectedText() {
   return selectedText;
 }
 
-const downloadLink = document.getElementById("download-link");
+const downloadPlainLink = document.getElementById("download-link-plain");
+const downloadTextLink = document.getElementById("download-link-html");
 
-downloadLink.addEventListener("click", saveFile);
+downloadPlainLink.addEventListener("click", savePlainFile);
+downloadTextLink.addEventListener("click", saveTextFile);
 
 document.getElementById("export").addEventListener("click", () => {
-  saveFile();
+  savePlainFile();
   alert(
     "Your file has been exported successfully, click Save As to download to your device."
   );
-  downloadLink.style.fontWeight = "bold";
+  downloadPlainLink.style.fontWeight = "bold";
 });
 
-function saveFile() {
+function savePlainFile() {
+  // Text content to be exported
+  const textToExport = editor.textContent;
+
+  const blob = new Blob([textToExport], { type: "text/plain" });
+
+  // Create a URL for the Blob
+  const url = URL.createObjectURL(blob);
+
+  // Set the download link's href attribute to the Blob URL
+  downloadPlainLink.href = url;
+}
+
+function saveTextFile() {
   // Text content to be exported
   const textToExport = editor.innerHTML;
 
@@ -356,11 +371,17 @@ function saveFile() {
   const url = URL.createObjectURL(blob);
 
   // Set the download link's href attribute to the Blob URL
-  downloadLink.href = url;
+  downloadTextLink.href = url;
 }
 
 let codeInitiated = false;
-document.getElementById("code").addEventListener("click", () => {
+const codeButton = document.getElementById("code");
+codeButton.addEventListener("click", () => {
+  if (!codeButton.classList.contains("active")) {
+    codeButton.classList.add("active");
+  } else {
+    codeButton.classList.remove("active");
+  }
   if (!codeInitiated) {
     let code = formatHTMLWithLineBreaks(editor.innerHTML);
     editor.textContent = code;
