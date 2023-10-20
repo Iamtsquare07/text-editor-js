@@ -144,8 +144,21 @@ function execCommandDependencies() {
 execCommandDependencies();
 
 document.getElementById("exit-button").addEventListener("click", function () {
-  // Close the browser tab
-  window.close();
+  try {
+    // Close the browser tab
+    window.close();
+
+    setTimeout(() => {
+      if (!window.close()) {
+        alert(
+          "Your browser decline the exit request. Please close the tab to exit."
+        );
+      }
+    }, 500);
+  } catch (e) {
+    alert("Error: " + e.message);
+    console.log(e);
+  }
 });
 
 emojiButton.addEventListener("click", function () {
