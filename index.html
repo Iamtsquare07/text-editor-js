@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
     <title>Text Editor</title>
 </head>
 
@@ -15,21 +16,44 @@
     <h1>Text Editor JS</h1>
     <div class="text-editor-root">
         <div class="options">
-            <ul>
-                <li><a href="#">File</a></li>
-                <li><a href="">Edit</a></li>
-                <li><a href="">Manage</a></li>
-                <li><a href="">Format</a></li>
-                <li><a href="">Upload</a></li>
+            <ul id="top-menu">
+                <li id="file-menu">File</li>
+                <li id="edit">Edit</li>
+                <li id="code">Code</li>
+            </ul>
+
+            <ul id="drop-down-menu">
+                <li id="export">Export</li>
+                <li>Format</li>
+                <li><a id="download-link" download="text-editor-file.txt">Save As</a></li>
+                <li id="save">Save</li>
+                <li id="auto">Auto Save <input id="auto-save" type="checkbox" checked></li>
+                <li id="exit-button">Exit</li>
+            </ul>
+
+            <ul id="edit-menu">
+                <li id="copy">Copy</li>
+                <li id="paste">Paste</li>
             </ul>
         </div>
+
         <div id="commands">
-            <button style="font-weight: bold;" onclick="document.execCommand('bold', false, null)">B</button>
-            <button style="text-decoration: underline;" onclick="document.execCommand('underline', false, null)">U</button>
-            <button style="font-style: italic;" onclick="document.execCommand('italic', false, null)">I</button>
-            <button onclick="document.execCommand('insertOrderedList', false, null)"><i class="fa-solid fa-list-ol"></i></button>
-            <button onclick="document.execCommand('insertUnorderedList', false, null)"><i class="fa-solid fa-list"></i></button>
-            <select id="fontSize" onchange="changeFontSize(this.value)">
+            <button id="undo"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+            <button id="redo"><i class="fa-solid fa-arrow-rotate-right"></i></button>
+            <button id="bold-text" style="font-weight: bold;">B</button>
+            <button id="underline-text" style="text-decoration: underline;">U</button>
+            <button id="italic-text" style="font-style: italic;">I</button>
+            <button id="strike-through"><i class="fa-solid fa-strikethrough"></i></button>
+            <button id="superscript"><i class="fa-solid fa-superscript"></i></button>
+            <button id="subscript"><i class="fa-solid fa-subscript"></i></button>
+            <button id="align-left"><i class="fa-solid fa-align-left"></i></button>
+            <button id="align-center"><i class="fa-solid fa-align-center"></i></button>
+            <button id="align-right"><i class="fa-solid fa-align-right"></i></button>
+            <button id="emoji-button">😀</button>
+            <button id="heading"><i class="fa-solid fa-heading"></i></button>
+            <button id="ordered-list" ><i class="fa-solid fa-list-ol"></i></button>
+            <button id="unordered-list"><i class="fa-solid fa-list"></i></button>
+            <select id="font-size">
                 <option value="1">8pt</option>
                 <option value="2">10pt</option>
                 <option value="3">12pt</option>
@@ -39,10 +63,11 @@
                 <option value="7">36pt</option>
             </select>
         </div>
-        <div contenteditable="true" id="editor" style="border: 1px solid #ccc; min-height: 200px;"></div>
+        <div contenteditable="true" id="editor" style="min-height: 200px;">
+        </div>
     </div>
 
-    <script src="index.js"></script>
+    <script type="module" src="index.js"></script>
 </body>
 
 </html>
