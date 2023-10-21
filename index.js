@@ -351,11 +351,11 @@ function savePlainFile() {
   const textToExport = editor.textContent;
 
   const blob = new Blob([textToExport], { type: "text/plain" });
-  downloadPlainLink.download = fileName("text-editor-file-js-plain")
+  downloadPlainLink.download = fileName("text-editor-file-js-plain");
 
   // Create a URL for the Blob
   const url = URL.createObjectURL(blob);
-  
+
   // Set the download link's href attribute to the Blob URL
   downloadPlainLink.href = url;
 }
@@ -375,18 +375,18 @@ function saveTextFile() {
 }
 
 function fileName(defaultValue) {
-  let userFileName = prompt("File name:", defaultValue)
+  let userFileName = prompt("File name:", defaultValue);
   if (!userFileName) {
-    userFileName = prompt("File name:", defaultValue)
+    userFileName = prompt("File name:", defaultValue);
   }
 
-  userFileName = removeNonLettersAndHyphens(userFileName).toLowerCase()
-  return `${userFileName}.txt`
+  userFileName = removeNonLettersAndHyphens(userFileName).toLowerCase();
+  return `${userFileName}.txt`;
 }
 
 function removeNonLettersAndHyphens(inputString) {
   // Use a regular expression to remove anything other than letters and hyphens
-  const cleanedString = inputString.replace(/[^a-zA-Z-]/g, '');
+  const cleanedString = inputString.replace(/[^a-zA-Z-]/g, "");
   return cleanedString;
 }
 
@@ -395,7 +395,6 @@ const originalString = "Hello, World! This-is 123 an example!";
 const cleanedString = removeNonLettersAndHyphens(originalString);
 
 console.log(cleanedString); // Output: "HelloWorldThis-isanexample"
-
 
 let codeInitiated = false;
 const codeButton = document.getElementById("code");
