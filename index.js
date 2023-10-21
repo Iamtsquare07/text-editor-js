@@ -19,8 +19,7 @@ let selectedText = "";
 function execCommandDependencies() {
   if (!document.execCommand) {
     alert(
-      `You're fucked! Your browser decided to choose voilence, 
-      so it stopped supporting the API that enable many features of this app to work correctly.`
+      `You're fucked! Your browser decided to choose voilence, so it stopped supporting the only API that enable almost all the features of this app. If anything work, thank your God.`
     );
   }
 
@@ -352,10 +351,11 @@ function savePlainFile() {
   const textToExport = editor.textContent;
 
   const blob = new Blob([textToExport], { type: "text/plain" });
+  downloadPlainLink.download = fileName("text-editor-file-js-plain")
 
   // Create a URL for the Blob
   const url = URL.createObjectURL(blob);
-
+  
   // Set the download link's href attribute to the Blob URL
   downloadPlainLink.href = url;
 }
@@ -366,13 +366,36 @@ function saveTextFile() {
 
   // Create a Blob containing the text
   const blob = new Blob([textToExport], { type: "text/html" });
-
+  downloadTextLink.download = fileName("text-editor-file-js");
   // Create a URL for the Blob
   const url = URL.createObjectURL(blob);
 
   // Set the download link's href attribute to the Blob URL
   downloadTextLink.href = url;
 }
+
+function fileName(defaultValue) {
+  let userFileName = prompt("File name:", defaultValue)
+  if (!userFileName) {
+    userFileName = prompt("File name:", defaultValue)
+  }
+
+  userFileName = removeNonLettersAndHyphens(userFileName).toLowerCase()
+  return `${userFileName}.txt`
+}
+
+function removeNonLettersAndHyphens(inputString) {
+  // Use a regular expression to remove anything other than letters and hyphens
+  const cleanedString = inputString.replace(/[^a-zA-Z-]/g, '');
+  return cleanedString;
+}
+
+// Example usage
+const originalString = "Hello, World! This-is 123 an example!";
+const cleanedString = removeNonLettersAndHyphens(originalString);
+
+console.log(cleanedString); // Output: "HelloWorldThis-isanexample"
+
 
 let codeInitiated = false;
 const codeButton = document.getElementById("code");
